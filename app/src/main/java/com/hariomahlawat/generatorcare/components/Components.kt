@@ -12,6 +12,6 @@ import androidx.compose.ui.unit.dp
 fun GeneratorCareLogo(modifier: Modifier = Modifier) {
     Text(text = "Generator Care",
         modifier = modifier.padding(bottom = 16.dp),
-        style = MaterialTheme.typography.h3,
+        style = MaterialTheme.typography.h4,
         color = Color.Red.copy(alpha = 0.5f))
 }

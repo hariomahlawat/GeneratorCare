@@ -55,7 +55,7 @@ fun SplashScreen(navController: NavController){
         ) {
             GeneratorCareLogo()
             Spacer(modifier = Modifier.height(15.dp))
-            Text(text = "\"Read. Change. Yourself \"",
+            Text(text = "\"Karam hi Dharam \"",
                 style = MaterialTheme.typography.h5,
                 color = Color.LightGray)
 
