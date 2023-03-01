@@ -21,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.components.GeneratorCareLogo
+import com.hariomahlawat.generatorcare.navigation.GeneratorCareScreens
 import kotlinx.coroutines.delay
 
 @Composable
@@ -36,6 +37,7 @@ fun SplashScreen(navController: NavController){
                         .getInterpolation(it)
                 }))
         delay(2000L)
+        navController.navigate(GeneratorCareScreens.HomeScreen.name)
 
     }
 
