@@ -21,6 +21,8 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+
     }
 
     buildTypes {
@@ -58,8 +60,21 @@ dependencies {
     kapt "com.google.dagger:hilt-compiler:2.44"
 
     //navigation
-    def nav_version = "2.5.3"
     implementation "androidx.navigation:navigation-compose:$nav_version"
+
+
+    //Room
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    // To use Kotlin annotation processing tool (kapt) MUST HAVE!
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation "androidx.room:room-ktx:$room_version"
+
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4"
 
 
     implementation 'androidx.core:core-ktx:1.9.0'
