@@ -15,4 +15,8 @@ class GeneratorViewModel : ViewModel() {
         generatorList.remove(generator)
     }
 
+    fun getAllGenerators():List<Generator>{
+        return generatorList
+    }
+
 }
