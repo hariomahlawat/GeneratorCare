@@ -18,7 +18,7 @@ import com.hariomahlawat.generatorcare.components.AppInputText
 import com.hariomahlawat.generatorcare.components.showToast
 
 @Composable
-fun AddGeneratorScreen(navController: NavController){
+fun AddGeneratorScreen(navController: NavController, ){
 
     var registration_number by remember {
         mutableStateOf("")
@@ -49,9 +49,19 @@ fun AddGeneratorScreen(navController: NavController){
                 top = 9.dp,
                 bottom = 8.dp),
             text = make,
-            label = "Make ",
+            label = "Make",
             onTextChange = {
                 make = it
+            })
+
+        AppInputText(
+            modifier = Modifier.padding(
+                top = 9.dp,
+                bottom = 8.dp),
+            text = model,
+            label = "Model",
+            onTextChange = {
+                model = it
             })
 
         AppButton(text = "Save",

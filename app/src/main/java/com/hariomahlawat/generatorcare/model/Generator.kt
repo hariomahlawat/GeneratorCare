@@ -1,5 +1,6 @@
 package com.hariomahlawat.generatorcare.model
 
+import android.annotation.SuppressLint
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.room.ColumnInfo
@@ -9,7 +10,7 @@ import java.time.Instant
 import java.util.*
 
 @Entity(tableName = "generators_tbl" )
-data class Generator @RequiresApi(Build.VERSION_CODES.O) constructor(
+data class Generator(
     @PrimaryKey
     val id: UUID = UUID.randomUUID(),
 
@@ -21,5 +22,8 @@ data class Generator @RequiresApi(Build.VERSION_CODES.O) constructor(
 
     @ColumnInfo(name = "model")
     val model: String,
+
+    @ColumnInfo(name = "generator_entry_date")
+    val entryDate: Date = Date.from(Instant.now())
 
 )
