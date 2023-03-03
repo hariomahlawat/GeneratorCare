@@ -35,8 +35,8 @@ android {
         // Flag to enable support for the new language APIs
         coreLibraryDesugaringEnabled true
         // Sets Java compatibility to Java 8
-        sourceCompatibility JavaVersion.VERSION_1_9
-        targetCompatibility JavaVersion.VERSION_1_9
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -61,6 +61,9 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.navigation:navigation-runtime-ktx:2.5.3'
     kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation "androidx.fragment:fragment-ktx:1.5.5"
+    implementation "androidx.activity:activity-ktx:1.6.1"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
 
     //navigation
     implementation "androidx.navigation:navigation-compose:$nav_version"

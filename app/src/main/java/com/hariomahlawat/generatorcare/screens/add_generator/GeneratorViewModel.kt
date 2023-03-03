@@ -1,7 +1,6 @@
 package com.hariomahlawat.generatorcare.screens.add_generator
 
 import android.util.Log
-import androidx.compose.runtime.mutableStateListOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hariomahlawat.generatorcare.model.Generator
@@ -16,7 +15,10 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class GeneratorViewModel  @Inject constructor(private val repository: GeneratorRepository):ViewModel(){
+class GeneratorViewModel  @Inject constructor(private val repository: GeneratorRepository):ViewModel()
+{
+
+
     private val _generatorList = MutableStateFlow<List<Generator>>(emptyList())
     val generatorList = _generatorList.asStateFlow()
 
@@ -24,7 +26,7 @@ class GeneratorViewModel  @Inject constructor(private val repository: GeneratorR
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllGenerators().distinctUntilChanged()
                 .collect { listOfGenerators ->
-                    if (listOfGenerators.isNullOrEmpty()) {
+                    if (listOfGenerators.isEmpty()) {
                         Log.d("Empty", ": Empty list")
                     } else {
                         _generatorList.value = listOfGenerators
