@@ -10,5 +10,5 @@ import com.hariomahlawat.generatorcare.utils.UUIDConverter
 @Database(entities = [Generator::class], version = 1, exportSchema = false)
 @TypeConverters(DateConverter::class, UUIDConverter::class)
 abstract class GeneratorCareDatabase : RoomDatabase() {
-    abstract fun generatorDao() : GeneratorDatabseDao
+    abstract fun generatorDao() : GeneratorDatabaseDao
 }

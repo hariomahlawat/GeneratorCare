@@ -3,7 +3,7 @@ package com.hariomahlawat.generatorcare.di
 import android.content.Context
 import androidx.room.Room
 import com.hariomahlawat.generatorcare.data.GeneratorCareDatabase
-import com.hariomahlawat.generatorcare.data.GeneratorDatabseDao
+import com.hariomahlawat.generatorcare.data.GeneratorDatabaseDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,7 +16,7 @@ import javax.inject.Singleton
 object AppModule {
     @Singleton
     @Provides
-    fun provideGeneratorsDao(generatorCareDatabase: GeneratorCareDatabase): GeneratorDatabseDao
+    fun provideGeneratorsDao(generatorCareDatabase: GeneratorCareDatabase): GeneratorDatabaseDao
             = generatorCareDatabase.generatorDao()
 
     @Singleton

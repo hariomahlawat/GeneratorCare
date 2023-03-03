@@ -5,7 +5,7 @@ import com.hariomahlawat.generatorcare.model.Generator
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface GeneratorDatabseDao {
+interface GeneratorDatabaseDao {
     @Query("SELECT * from generators_tbl")
     fun getGenerators(): Flow<List<Generator>>
 
