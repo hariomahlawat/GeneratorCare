@@ -1,5 +1,6 @@
 package com.hariomahlawat.generatorcare.screens.add_generator
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,10 +8,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.List
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -30,26 +32,80 @@ import com.hariomahlawat.generatorcare.components.AppButton
 import com.hariomahlawat.generatorcare.components.AppInputText
 import com.hariomahlawat.generatorcare.components.showToast
 import com.hariomahlawat.generatorcare.model.Generator
+import com.hariomahlawat.generatorcare.navigation.*
+import com.hariomahlawat.generatorcare.screens.home.HomeScreenInner
 import com.hariomahlawat.generatorcare.utils.formatDate
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 
 fun AddGeneratorScreen(navController: NavController){
 
-    val generatorViewModel = hiltViewModel<GeneratorViewModel>()
+    val scaffoldState = rememberScaffoldState()
+    val scope = rememberCoroutineScope()
+    Scaffold(
+        scaffoldState = scaffoldState,
+        topBar = {
+            AppBar(
+                onNavigationIconClick = {
+                    scope.launch {
+                        scaffoldState.drawerState.open()
+                    }
+                }
+            )
+        },
+        drawerGesturesEnabled = scaffoldState.drawerState.isOpen,
+        drawerContent = {
+            DrawerHeader()
+            DrawerBody(
+                items = listOf(
+                    MenuItem(
+                        id = "home",
+                        title = "Home",
+                        contentDescription = "Go to home screen",
+                        icon = Icons.Default.Home,
+                        navigation_address = GeneratorCareScreens.HomeScreen.name
 
-    var generatorsList = generatorViewModel.generatorList.collectAsState().value
-    AddGenerator(generators = generatorsList,
-        onAddGenerator = {generatorViewModel.addGenerator(it)},
-        onRemoveGenerator = {generatorViewModel.removeGenerator(it)})
+                    ),
+                    MenuItem(
+                        id = "maintenance_Record",
+                        title = "Maintenance History",
+                        contentDescription = "Get Maintenance History",
+                        icon = Icons.Default.List,
+                        navigation_address = GeneratorCareScreens.MaintenanceRecordScreen.name
+                    ),
+                    MenuItem(
+                        id = "advisory",
+                        title = "Adviisory",
+                        contentDescription = "Go to advisory screen",
+                        icon = Icons.Default.Info,
+                        navigation_address = GeneratorCareScreens.AddGeneratorScreen.name
+                    ),
+
+                    ),
+                onItemClick = {
+                    navController.navigate(route = it.navigation_address)
+                }
+            )
+        }
+    ) {
+        val generatorViewModel = hiltViewModel<GeneratorViewModel>()
+
+        var generatorsList = generatorViewModel.generatorList.collectAsState().value
+        AddGenerator(generators = generatorsList,
+            onAddGenerator = {generatorViewModel.addGenerator(it)},
+            onRemoveGenerator = {generatorViewModel.removeGenerator(it)})
+    }
+
 }
 
 @Composable
 fun AddGenerator(generators: List<Generator>,
                  onAddGenerator: (Generator) -> Unit,
                  onRemoveGenerator: (Generator) -> Unit
-    ){
+){
     var registration_number by remember {
         mutableStateOf("")
     }
@@ -118,12 +174,12 @@ fun AddGenerator(generators: List<Generator>,
 
         Divider(modifier = Modifier.padding(10.dp))
 
-LazyColumn{
-    items(generators){generator ->
-        GeneratorRow(generator = generator,
-        onGeneratorClicked = {onRemoveGenerator(it)})
-    }
-}
+        LazyColumn{
+            items(generators){generator ->
+                GeneratorRow(generator = generator,
+                    onGeneratorClicked = {onRemoveGenerator(it)})
+            }
+        }
 
 
     }
