@@ -23,6 +23,7 @@ fun MaintenanceAlertScreen(navController: NavController){
         scaffoldState = scaffoldState,
         topBar = {
             AppBar(
+                title="Maintenance Alerts",
                 onNavigationIconClick = {
                     scope.launch {
                         scaffoldState.drawerState.open()

@@ -51,6 +51,7 @@ fun AddGeneratorScreen(navController: NavController){
         scaffoldState = scaffoldState,
         topBar = {
             AppBar(
+                title = "Add new Generator",
                 onNavigationIconClick = {
                     scope.launch {
                         scaffoldState.drawerState.open()

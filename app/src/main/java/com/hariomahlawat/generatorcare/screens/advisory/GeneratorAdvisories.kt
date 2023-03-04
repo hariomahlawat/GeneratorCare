@@ -23,6 +23,7 @@ fun GeneratorAdvisoryScreen(navController: NavController){
         scaffoldState = scaffoldState,
         topBar = {
             AppBar(
+                title="Maintenance Tips",
                 onNavigationIconClick = {
                     scope.launch {
                         scaffoldState.drawerState.open()

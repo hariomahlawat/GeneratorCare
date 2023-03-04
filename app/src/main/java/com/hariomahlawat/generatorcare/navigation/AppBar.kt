@@ -9,11 +9,12 @@ import com.hariomahlawat.generatorcare.R
 
 @Composable
 fun AppBar(
+    title:String="Generator Care",
     onNavigationIconClick: () -> Unit
 ) {
     TopAppBar(
         title = {
-            Text(text = stringResource(id = R.string.app_name))
+            Text(text = title)
         },
         backgroundColor = MaterialTheme.colors.primary,
         contentColor = MaterialTheme.colors.onPrimary,

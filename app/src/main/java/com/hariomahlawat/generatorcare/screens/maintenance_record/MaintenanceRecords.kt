@@ -23,6 +23,7 @@ fun MaintenanceRecordScreen(navController: NavController){
         scaffoldState = scaffoldState,
         topBar = {
             AppBar(
+                title="Maintenance Records",
                 onNavigationIconClick = {
                     scope.launch {
                         scaffoldState.drawerState.open()
