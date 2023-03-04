@@ -34,31 +34,7 @@ fun MaintenanceAlertScreen(navController: NavController){
         drawerContent = {
             DrawerHeader()
             DrawerBody(
-                items = listOf(
-                    MenuItem(
-                        id = "home",
-                        title = "Home",
-                        contentDescription = "Go to home screen",
-                        icon = Icons.Default.Home,
-                        navigation_address = GeneratorCareScreens.HomeScreen.name
-
-                    ),
-                    MenuItem(
-                        id = "maintenance_Record",
-                        title = "Maintenance History",
-                        contentDescription = "Get Maintenance History",
-                        icon = Icons.Default.List,
-                        navigation_address = GeneratorCareScreens.MaintenanceRecordScreen.name
-                    ),
-                    MenuItem(
-                        id = "advisory",
-                        title = "Adviisory",
-                        contentDescription = "Go to advisory screen",
-                        icon = Icons.Default.Info,
-                        navigation_address = GeneratorCareScreens.AdvisoryScreen.name
-                    ),
-
-                    ),
+                items = MenuItemData().loadMenuItems(),
                 onItemClick = {
                     navController.navigate(route = it.navigation_address)
                 }
