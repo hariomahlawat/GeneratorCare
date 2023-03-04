@@ -23,6 +23,15 @@ data class Generator(
     @ColumnInfo(name = "model")
     val model: String,
 
+    @ColumnInfo(name = "kva_rating")
+    val kva_rating: String,
+
+    @ColumnInfo(name = "hours_run")
+    val hours_run: Int,
+
+    @ColumnInfo(name = "issue_date")
+    val issueDate: Date,
+
     @ColumnInfo(name = "generator_entry_date")
     val entryDate: Date = Date.from(Instant.now())
 
