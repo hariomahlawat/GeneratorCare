@@ -13,6 +13,13 @@ class MenuItemData {
             icon = Icons.Default.Home,
             navigation_address = GeneratorCareScreens.HomeScreen.name),
             MenuItem(
+                id = "inventory",
+                title = "My Generators",
+                contentDescription = "Get Maintenance History",
+                icon = Icons.Default.List,
+                navigation_address = GeneratorCareScreens.GeneratorsListScreen.name
+            ),
+            MenuItem(
                 id = "maintenance_Record",
                 title = "Maintenance History",
                 contentDescription = "Get Maintenance History",

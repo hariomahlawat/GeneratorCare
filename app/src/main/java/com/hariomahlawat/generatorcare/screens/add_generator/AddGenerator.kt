@@ -74,16 +74,14 @@ fun AddGeneratorScreen(navController: NavController){
 
         var generatorsList = generatorViewModel.generatorList.collectAsState().value
         AddGenerator(generators = generatorsList,
-            onAddGenerator = {generatorViewModel.addGenerator(it)},
-            onRemoveGenerator = {generatorViewModel.removeGenerator(it)})
+            onAddGenerator = {generatorViewModel.addGenerator(it)})
     }
 
 }
 
 @Composable
 fun AddGenerator(generators: List<Generator>,
-                 onAddGenerator: (Generator) -> Unit,
-                 onRemoveGenerator: (Generator) -> Unit
+                 onAddGenerator: (Generator) -> Unit
 ){
     var registration_number by remember {
         mutableStateOf("")
@@ -156,12 +154,7 @@ fun AddGenerator(generators: List<Generator>,
 
         Divider(modifier = Modifier.padding(10.dp))
 
-        LazyColumn{
-            items(generators){generator ->
-                GeneratorRow(generator = generator,
-                    onGeneratorClicked = {onRemoveGenerator(it)})
-            }
-        }
+
 
 
     }
