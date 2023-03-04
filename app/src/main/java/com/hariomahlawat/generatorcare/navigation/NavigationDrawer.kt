@@ -1,9 +1,11 @@
 package com.hariomahlawat.generatorcare.navigation
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -19,11 +21,13 @@ fun DrawerHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 64.dp),
+            .padding(vertical = 40.dp),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Header", fontSize = 60.sp)
+        Text(text = "Generator Care", fontSize = 33.sp)
     }
+
+
 }
 
 @Composable
@@ -43,7 +47,7 @@ fun DrawerBody(
                     }
                     .padding(16.dp)
             ) {
-                Icon(
+                Image(
                     imageVector = item.icon,
                     contentDescription = item.contentDescription
                 )
