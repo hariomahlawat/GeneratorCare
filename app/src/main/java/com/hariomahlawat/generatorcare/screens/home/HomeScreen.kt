@@ -63,7 +63,7 @@ fun HomeScreen(navController: NavController) {
                         title = "Adviisory",
                         contentDescription = "Go to advisory screen",
                         icon = Icons.Default.Info,
-                        navigation_address = GeneratorCareScreens.AddGeneratorScreen.name
+                        navigation_address = GeneratorCareScreens.AdvisoryScreen.name
                     ),
 
                     ),
