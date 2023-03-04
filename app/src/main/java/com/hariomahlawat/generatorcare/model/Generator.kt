@@ -30,7 +30,7 @@ data class Generator(
     val hours_run: Int,
 
     @ColumnInfo(name = "issue_date")
-    val issueDate: Date,
+    val issueDate: Date?,
 
     @ColumnInfo(name = "generator_entry_date")
     val entryDate: Date = Date.from(Instant.now())

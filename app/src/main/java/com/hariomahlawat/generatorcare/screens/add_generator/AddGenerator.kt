@@ -37,6 +37,8 @@ import com.hariomahlawat.generatorcare.screens.home.HomeScreenInner
 import com.hariomahlawat.generatorcare.utils.formatDate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.time.Instant
+import java.util.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -134,7 +136,10 @@ fun AddGenerator(generators: List<Generator>,
                         Generator(
                             registration_number=registration_number,
                             make = make,
-                            model = model
+                            model = model,
+                            kva_rating = "",
+                            hours_run = 1,
+                            issueDate = Date.from(Instant.now())
                         )
                     )
 
