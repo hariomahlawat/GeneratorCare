@@ -30,6 +30,7 @@ import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.components.AppButton
 import com.hariomahlawat.generatorcare.components.AppInputText
 import com.hariomahlawat.generatorcare.components.showToast
+import com.hariomahlawat.generatorcare.data.getGeneratorMakeList
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.navigation.*
 import com.hariomahlawat.generatorcare.screens.home.HomeScreenInner
@@ -90,7 +91,7 @@ fun AddGenerator(generators: List<Generator>,
                  onAddGenerator: (Generator) -> Unit
 ){
     //options for generator make/oem
-    val options = listOf("Select OEM", "Honda", "Kirloskar", "Eicher")
+    val options = getGeneratorMakeList()
 
     var registration_number by remember {mutableStateOf("")}
     var make by remember {mutableStateOf("")}
@@ -228,7 +229,7 @@ fun AddGenerator(generators: List<Generator>,
         AppButton(text = "Save",
             onClick = {
                 if (registration_number.isNotEmpty()
-                    && make.isNotEmpty()
+                    && make=="Select OEM"
                     && model.isNotEmpty()
                     && hours_run.isNotEmpty()
                     && kva_rating.isNotEmpty()
