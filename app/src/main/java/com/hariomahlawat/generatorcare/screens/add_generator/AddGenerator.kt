@@ -84,10 +84,14 @@ fun AddGeneratorScreen(navController: NavController){
 
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AddGenerator(generators: List<Generator>,
                  onAddGenerator: (Generator) -> Unit
 ){
+    //options for generator make/oem
+    val options = listOf("Select OEM", "Honda", "Kirloskar", "Eicher")
+
     var registration_number by remember {mutableStateOf("")}
     var make by remember {mutableStateOf("")}
     var model by remember {mutableStateOf("")}
@@ -116,16 +120,48 @@ fun AddGenerator(generators: List<Generator>,
             onTextChange = {
                 registration_number = it
             } )
+        //--- to select make from dropdown list
+        var expanded by remember { mutableStateOf(false) }
+        var selectedOptionText by remember { mutableStateOf(options[0]) }
 
-        AppInputText(
-            modifier = Modifier.padding(
-                top = 9.dp,
-                bottom = 8.dp),
-            text = make,
-            label = "Make",
-            onTextChange = {
-                make = it
-            })
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = {
+                expanded = !expanded
+            }
+        ) {
+            TextField(
+                readOnly = true,
+                value = selectedOptionText,
+                onValueChange = { },
+                label = { Text("Categories") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expanded
+                    )
+                },
+                colors = ExposedDropdownMenuDefaults.textFieldColors()
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = {
+                    expanded = false
+                }
+            ) {
+                options.forEach { selectionOption ->
+                    DropdownMenuItem(
+                        onClick = {
+                            selectedOptionText = selectionOption
+                            expanded = false
+                        }
+                    ) {
+                        Text(text = selectionOption)
+                    }
+                }
+            }
+        }
+        make = selectedOptionText
+        //--------------------------------------------------------------------------------
 
         AppInputText(
             modifier = Modifier.padding(
