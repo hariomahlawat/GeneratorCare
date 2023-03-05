@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.R
+import com.hariomahlawat.generatorcare.data.getGeneratorLogo
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.navigation.AppBar
 import com.hariomahlawat.generatorcare.navigation.DrawerBody
@@ -88,8 +89,7 @@ fun GeneratorsListScreenInner(navController: NavController,
 
         items(generators){generator ->
             //Spacer(modifier = Modifier.padding(5.dp))
-
-            GeneratorCard(generator = generator, image_id = R.drawable.kirloskar_logo, onGeneratorClicked = onGeneratorClick)
+            GeneratorCard(generator = generator, image_id = getGeneratorLogo(generator.make), onGeneratorClicked = onGeneratorClick)
 
         }
     }
