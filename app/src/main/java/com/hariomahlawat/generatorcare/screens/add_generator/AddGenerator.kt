@@ -135,7 +135,7 @@ fun AddGenerator(generators: List<Generator>,
                 readOnly = true,
                 value = selectedOptionText,
                 onValueChange = { },
-                label = { Text("Categories") },
+                label = { Text("Make / OEM") },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(
                         expanded = expanded
