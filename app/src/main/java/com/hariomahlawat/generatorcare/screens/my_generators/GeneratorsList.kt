@@ -31,10 +31,7 @@ import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.R
 import com.hariomahlawat.generatorcare.data.getGeneratorLogo
 import com.hariomahlawat.generatorcare.model.Generator
-import com.hariomahlawat.generatorcare.navigation.AppBar
-import com.hariomahlawat.generatorcare.navigation.DrawerBody
-import com.hariomahlawat.generatorcare.navigation.DrawerHeader
-import com.hariomahlawat.generatorcare.navigation.MenuItemData
+import com.hariomahlawat.generatorcare.navigation.*
 import com.hariomahlawat.generatorcare.screens.add_generator.GeneratorViewModel
 import com.hariomahlawat.generatorcare.utils.formatDate
 import kotlinx.coroutines.launch
@@ -88,7 +85,7 @@ fun GeneratorsListScreenInner(navController: NavController,
     ){
 
         items(generators){generator ->
-            GeneratorCard(generator = generator, image_id = getGeneratorLogo(generator.make), onGeneratorClicked = onGeneratorClick)
+            GeneratorCard(navController=navController,generator = generator, image_id = getGeneratorLogo(generator.make), onGeneratorClicked = onGeneratorClick)
 
         }
     }
@@ -96,6 +93,7 @@ fun GeneratorsListScreenInner(navController: NavController,
 
 @Composable
 fun GeneratorCard(
+    navController: NavController,
     modifier: Modifier = Modifier,
     generator: Generator,
     image_id:Int,
@@ -109,7 +107,9 @@ fun GeneratorCard(
         modifier = modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { onGeneratorClicked(generator) }
+            .clickable {
+                navController.navigate(GeneratorCareScreens.LogbookScreen.name+"/"+generator.id)
+            }
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Start,
