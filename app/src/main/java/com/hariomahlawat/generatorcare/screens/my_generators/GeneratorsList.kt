@@ -88,7 +88,6 @@ fun GeneratorsListScreenInner(navController: NavController,
     ){
 
         items(generators){generator ->
-            //Spacer(modifier = Modifier.padding(5.dp))
             GeneratorCard(generator = generator, image_id = getGeneratorLogo(generator.make), onGeneratorClicked = onGeneratorClick)
 
         }
@@ -105,10 +104,11 @@ fun GeneratorCard(
     Card(
         shape = RoundedCornerShape(14.dp),
         elevation = 9.dp,
-        backgroundColor = Color.DarkGray,
+        backgroundColor = MaterialTheme.colors.background,
+        contentColor = MaterialTheme.colors.onBackground,
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp)
+            .padding(8.dp)
             .clickable { onGeneratorClicked(generator) }
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
@@ -146,41 +146,3 @@ fun GeneratorCard(
         }
         }
     }
-
-@Composable
-fun CustomGeneratorCard(
-modifier: Modifier = Modifier,
-generator: Generator,
-onGeneratorClicked: (Generator) -> Unit
-) {
-Card(
-elevation = 10.dp,
-contentColor = Color.White,
-backgroundColor = Color.DarkGray,
-modifier = modifier
-    .width(180.dp)
-    .clip(RoundedCornerShape(12.dp))
-    .clickable { onGeneratorClicked(generator) }
-) {
-Column(
-horizontalAlignment = Alignment.CenterHorizontally,
-verticalArrangement = Arrangement.Center,
-modifier = Modifier.padding(5.dp)
-) {
-Text(text = generator.make,
-    style = MaterialTheme.typography.subtitle1,
-    fontSize = 22.sp,
-
-)
-Text(text = "Model: " +generator.model, style = MaterialTheme.typography.subtitle1)
-Text(text = "KVA Rating: " +generator.kva_rating, style = MaterialTheme.typography.subtitle1)
-Text(text = "Regd No: " +generator.registration_number, style = MaterialTheme.typography.subtitle2)
-/*Text(text = "Hours run: " +generator.hours_run.toString(), style = MaterialTheme.typography.subtitle1)
-Text(text = "Issue Date: " + generator.issueDate?.let { formatDate(it.time) },
-    style = MaterialTheme.typography.subtitle1)
-Text(text = "Data entry Date: " + formatDate(generator.entryDate.time),
-    style = MaterialTheme.typography.caption)*/
-
-}
-}
-}
