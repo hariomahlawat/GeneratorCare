@@ -42,7 +42,7 @@ fun HomeScreen(navController: NavController) {
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
-    var scrollState = rememberScrollState()
+    val scrollState = rememberScrollState()
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
@@ -140,9 +140,9 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
 //To display common faults and its reasons
 @Composable
 fun CommonFaultRandomView(){
-    var count:Int = getCommonFaults().count()
-    var index:Int = Random(System.nanoTime()).nextInt(0,count)
-    var fault:CommonFault = getCommonFaults()[index]
+    val count:Int = getCommonFaults().count()
+    val index:Int = Random(System.nanoTime()).nextInt(0,count)
+    val fault:CommonFault = getCommonFaults()[index]
     CommonFaultCard(commonFault = fault)
 }
 
@@ -151,7 +151,7 @@ fun CommonFaultRandomView(){
 fun NotificationView(){}
 
 
-// InfoCard to display info about advisory, dos and donts, videos and other app features
+// InfoCard to display info about advisory, dos and don't's, videos and other app features
 @Composable
 fun InfoView(){}
 
