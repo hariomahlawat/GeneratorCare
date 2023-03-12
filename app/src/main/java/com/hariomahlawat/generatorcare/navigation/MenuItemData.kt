@@ -3,6 +3,8 @@ package com.hariomahlawat.generatorcare.navigation
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.rounded.Info
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import com.hariomahlawat.generatorcare.R
@@ -25,14 +27,14 @@ class MenuItemData {
                 id = "maintenance_Record",
                 title = "Maintenance History",
                 contentDescription = "Get Maintenance History",
-                icon = Icons.Default.Done,
+                icon = Icons.Rounded.Refresh,
                 navigation_address = GeneratorCareScreens.MaintenanceRecordScreen.name
             ),
             MenuItem(
                 id = "advisory",
                 title = "Maintenance Advisory",
                 contentDescription = "Go to advisory screen",
-                icon = Icons.Default.Info,
+                icon = Icons.Rounded.Info,
                 navigation_address = GeneratorCareScreens.GeneratorAdvisoryScreen.name
             ),
             MenuItem(
