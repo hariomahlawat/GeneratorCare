@@ -77,6 +77,10 @@ fun HomeScreen(navController: NavController) {
             Divider(thickness = 1.dp, color = Color.LightGray)
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             CommonFaultRandomView()
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            //Divider(thickness = 1.dp, color = Color.LightGray)
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+
         }
 
     }
