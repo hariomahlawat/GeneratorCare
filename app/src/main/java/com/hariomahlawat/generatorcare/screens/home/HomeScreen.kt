@@ -25,12 +25,16 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.GeneratorCareApp
 import com.hariomahlawat.generatorcare.components.AppButton
+import com.hariomahlawat.generatorcare.components.CommonFaultCard
 import com.hariomahlawat.generatorcare.components.GeneratorCard
+import com.hariomahlawat.generatorcare.data.getCommonFaults
 import com.hariomahlawat.generatorcare.data.getGeneratorLogo
+import com.hariomahlawat.generatorcare.model.CommonFault
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.navigation.*
 import com.hariomahlawat.generatorcare.screens.add_generator.GeneratorViewModel
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -71,6 +75,8 @@ fun HomeScreen(navController: NavController) {
             InventoryCard(navController,generatorsList)
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             Divider(thickness = 1.dp, color = Color.LightGray)
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            CommonFaultRandomView()
         }
 
     }
@@ -127,15 +133,23 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
     }
 }
 
+//To display common faults and its reasons
+@Composable
+fun CommonFaultRandomView(){
+    var count:Int = getCommonFaults().count()
+    var index:Int = Random(System.nanoTime()).nextInt(0,count)
+    var fault:CommonFault = getCommonFaults()[index]
+    CommonFaultCard(commonFault = fault)
+}
 
 //Notification Card to display pending maintenance, upcoming maintenance etc.
 @Composable
-fun NotificationCard(){}
+fun NotificationView(){}
 
 
 // InfoCard to display info about advisory, dos and donts, videos and other app features
 @Composable
-fun InfoCard(){}
+fun InfoView(){}
 
 
 

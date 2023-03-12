@@ -3,6 +3,7 @@ package com.hariomahlawat.generatorcare.components
 import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -20,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.hariomahlawat.generatorcare.model.CommonFault
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.navigation.GeneratorCareScreens
 
@@ -116,6 +118,46 @@ fun GeneratorCard(
             Spacer(modifier = modifier.padding(vertical = 2.dp))
             Text(text = "Hours run: " +generator.hours_run.toString(), style = MaterialTheme.typography.subtitle2)
             Spacer(modifier = modifier.padding(vertical = 2.dp))
+        }
+    }
+}
+
+@Composable
+fun CommonFaultCard(commonFault:CommonFault){
+    Card(
+        shape = RoundedCornerShape(6.dp),
+        elevation = 9.dp,
+        //backgroundColor = MaterialTheme.colors.background,
+        //contentColor = MaterialTheme.colors.onBackground,
+        modifier = Modifier.padding(5.dp)
+            .fillMaxWidth()
+    ) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier.fillMaxWidth().padding(4.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(MaterialTheme.colors.background)
+                    .padding(10.dp)
+            ) {
+
+                Text(text = "Common Fault: "+ commonFault.fault, style = MaterialTheme.typography.h6)
+            }
+            Column(
+                horizontalAlignment = Alignment.Start,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxWidth().padding(10.dp)
+            ) {
+                var i:Int=1
+                for (reason in commonFault.reasons){
+                    Text(text = i.toString()+".    "+reason, style = MaterialTheme.typography.subtitle1)
+                    Spacer(modifier = Modifier.padding(vertical = 3.dp))
+                    i=i+1
+                }
+            }
         }
     }
 }
