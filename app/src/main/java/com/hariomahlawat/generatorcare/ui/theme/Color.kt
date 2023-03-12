@@ -2,12 +2,12 @@ package com.hariomahlawat.generatorcare.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Primary200 = Color(0xFF75CBF1)
+val Primary200 = Color(0xFF80DEEA)
 val Primary500 = Color(0xFF00BCD4)
-val Primary700 = Color(0xFF03A9F4)
-val Secondary200 = Color(0xFFCDDC39)
+val Primary700 = Color(0xFF0097A7)
+val Secondary200 = Color(0xFFC5E1A5)
 val Secondary500 = Color(0xFF8BC34A)
-val Secondary700 = Color(0xFF4CAF50)
+val Secondary700 = Color(0xFF689F38)
 
 
 /*val Primary500 = Color(0xFF64869B)

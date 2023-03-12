@@ -103,7 +103,7 @@ fun GeneratorInfo( generator: Generator){
         Text(
             text = "Generator Info Card",
             style = MaterialTheme.typography.h5,
-            color = MaterialTheme.colors.primary
+            //color = MaterialTheme.colors.secondaryVariant
         )
         Text(text = "Regd No : "+generator.registration_number)
         Text(text = "Model No : "+generator.model)
