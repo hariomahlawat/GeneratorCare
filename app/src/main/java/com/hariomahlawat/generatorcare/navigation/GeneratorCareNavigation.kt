@@ -10,6 +10,7 @@ import com.hariomahlawat.generatorcare.screens.SplashScreen
 import com.hariomahlawat.generatorcare.screens.add_generator.AddGeneratorScreen
 import com.hariomahlawat.generatorcare.screens.advisory.GeneratorAdvisoryScreen
 import com.hariomahlawat.generatorcare.screens.alerts.MaintenanceAlertScreen
+import com.hariomahlawat.generatorcare.screens.checklist.MaintenanceChecklistScreen
 import com.hariomahlawat.generatorcare.screens.home.HomeScreen
 import com.hariomahlawat.generatorcare.screens.logbook.LogbookScreen
 import com.hariomahlawat.generatorcare.screens.maintenance_record.MaintenanceRecordScreen
@@ -48,6 +49,9 @@ fun GeneratorCareNavigation() {
 
         composable(GeneratorCareScreens.GeneratorsListScreen.name) {
             GeneratorsListScreen(navController = navController)
+        }
+        composable(GeneratorCareScreens.MaintenanceChecklistScreen.name) {
+            MaintenanceChecklistScreen(navController = navController)
         }
 
         composable(GeneratorCareScreens.LogbookScreen.name+"/{generatorId}",

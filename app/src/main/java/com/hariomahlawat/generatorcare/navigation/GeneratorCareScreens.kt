@@ -8,7 +8,8 @@ enum class GeneratorCareScreens {
     MaintenanceAlertsScreen,
     GeneratorsListScreen,
     MaintenanceRecordScreen,
-    LogbookScreen;
+    LogbookScreen,
+    MaintenanceChecklistScreen;
 
     companion object {
         fun fromRoute(route: String?): GeneratorCareScreens
@@ -21,6 +22,7 @@ enum class GeneratorCareScreens {
             GeneratorsListScreen.name -> GeneratorsListScreen
             MaintenanceRecordScreen.name -> MaintenanceRecordScreen
             LogbookScreen.name -> LogbookScreen
+            MaintenanceChecklistScreen.name -> MaintenanceChecklistScreen
             null -> HomeScreen
             else -> throw IllegalArgumentException("Route $route is not recognized")
         }

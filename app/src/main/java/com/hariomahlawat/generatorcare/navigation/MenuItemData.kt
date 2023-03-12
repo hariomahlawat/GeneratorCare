@@ -32,7 +32,17 @@ class MenuItemData {
                 contentDescription = "Go to advisory screen",
                 icon = Icons.Default.Info,
                 navigation_address = GeneratorCareScreens.GeneratorAdvisoryScreen.name
-            )
+            ),
+            MenuItem(
+                id = "checklist",
+                title = "Maintenance Checklist",
+                contentDescription = "Go to maintenance checklist screen",
+                icon = Icons.Default.List,
+                navigation_address = GeneratorCareScreens.MaintenanceChecklistScreen.name
+            ),
+
+
+
         )
     }
 }

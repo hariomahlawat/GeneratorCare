@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun MaintChecklistScreen(navController: NavController){
+fun MaintenanceChecklistScreen(navController: NavController){
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
@@ -30,7 +30,7 @@ fun MaintChecklistScreen(navController: NavController){
         scaffoldState = scaffoldState,
         topBar = {
             AppBar(
-                title="Maintenance Alerts",
+                title="Maintenance Checklist",
                 onNavigationIconClick = {
                     scope.launch {
                         scaffoldState.drawerState.open()
@@ -69,14 +69,15 @@ fun MaintenanceCheckListView(){
     val sixMonthlyMaint:List<String> = getSixMonthlyMaintenanceChecklist()
     val asNeededMaint:List<String> = getAsNeededMaintenanceChecklist()
 
+    Spacer(modifier = Modifier.padding(vertical = 5.dp))
     ShowAdvisoryList(title = "Daily Maintenance Checklist", points = dailyMaint)
     Spacer(modifier = Modifier.padding(vertical = 10.dp))
     ShowAdvisoryList(title = "Weekly Maintenance Checklist", points = weeklyMaint)
     Spacer(modifier = Modifier.padding(vertical = 10.dp))
     ShowAdvisoryList(title = "Monthly Maintenance Checklist", points = monthlyMaint)
-    Spacer(modifier = Modifier.padding(vertical = 20.dp))
+    Spacer(modifier = Modifier.padding(vertical = 10.dp))
     ShowAdvisoryList(title = "Six Monthly Maintenance Checklist", points = sixMonthlyMaint)
-    Spacer(modifier = Modifier.padding(vertical = 20.dp))
+    Spacer(modifier = Modifier.padding(vertical = 10.dp))
     ShowAdvisoryList(title = "As Needed Maintenance Checklist", points = asNeededMaint)
-    Spacer(modifier = Modifier.padding(vertical = 20.dp))
+    Spacer(modifier = Modifier.padding(vertical = 10.dp))
 }
