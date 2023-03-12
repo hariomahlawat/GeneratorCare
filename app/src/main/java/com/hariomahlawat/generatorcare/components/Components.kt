@@ -164,3 +164,39 @@ fun CommonFaultCard(commonFault:CommonFault){
 
 
 
+@Composable
+fun ShowAdvisoryList(title:String, points:List<String>){
+    Column(
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start,
+        modifier = Modifier
+    ) {
+        Text(
+            text = title,
+            style = MaterialTheme.typography.h6,
+            color = Color.White,
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(MaterialTheme.colors.primaryVariant)
+                .padding(5.dp)
+        )
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
+        var i:Int = 1
+        for (point in points){
+            ShowPoint(point = i.toString() +".    "+ point)
+            i=i+1
+        }
+    }
+}
+
+@Composable
+fun ShowPoint(point:String){
+    Text(
+        text = point,
+        style = MaterialTheme.typography.subtitle1
+    )
+    Spacer(modifier = Modifier.padding(vertical = 3.dp))
+}
+
+
+

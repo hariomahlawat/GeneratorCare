@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.hariomahlawat.generatorcare.components.ShowAdvisoryList
 import com.hariomahlawat.generatorcare.data.getDosFromMaintAdvisory
 import com.hariomahlawat.generatorcare.data.getStartingProcedureFromMaintAdvisory
 import com.hariomahlawat.generatorcare.data.getStoppingProcedureFromMaintAdvisory
@@ -76,41 +77,4 @@ fun GeneratorAdvisoryScreen(navController: NavController){
 
 }
 
-@Composable
-fun AdvisoryScreenInner(navController: NavController){
 
-}
-
-@Composable
-fun ShowAdvisoryList(title:String, points:List<String>){
-    Column(
-        verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.Start,
-        modifier = Modifier
-    ) {
-        Text(
-            text = title,
-            style = MaterialTheme.typography.h6,
-            color = Color.White,
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(MaterialTheme.colors.primaryVariant)
-                .padding(5.dp)
-        )
-        Spacer(modifier = Modifier.padding(vertical = 8.dp))
-        var i:Int = 1
-        for (point in points){
-            ShowPoint(point = i.toString() +".    "+ point)
-            i=i+1
-        }
-    }
-}
-
-@Composable
-fun ShowPoint(point:String){
-    Text(
-        text = point,
-        style = MaterialTheme.typography.subtitle1
-    )
-    Spacer(modifier = Modifier.padding(vertical = 3.dp))
-}
