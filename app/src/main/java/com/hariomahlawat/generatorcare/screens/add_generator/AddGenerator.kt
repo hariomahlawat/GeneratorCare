@@ -185,7 +185,11 @@ fun AddGenerator(generators: List<Generator>,
                 Text(text = "Pick Issue date")
             }
             Spacer(modifier = Modifier.padding(16.dp))
-            Text(text = formattedDate)
+            if(issueDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedDate)
+            }
 
         }
         Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
