@@ -4,7 +4,7 @@ enum class GeneratorCareScreens {
     SplashScreen,
     HomeScreen,
     AddGeneratorScreen,
-    AdvisoryScreen,
+    GeneratorAdvisoryScreen,
     MaintenanceAlertsScreen,
     GeneratorsListScreen,
     MaintenanceRecordScreen,
@@ -16,7 +16,7 @@ enum class GeneratorCareScreens {
             SplashScreen.name -> SplashScreen
             HomeScreen.name -> HomeScreen
             AddGeneratorScreen.name -> AddGeneratorScreen
-            AdvisoryScreen.name -> AdvisoryScreen
+            GeneratorAdvisoryScreen.name -> GeneratorAdvisoryScreen
             MaintenanceAlertsScreen.name -> MaintenanceAlertsScreen
             GeneratorsListScreen.name -> GeneratorsListScreen
             MaintenanceRecordScreen.name -> MaintenanceRecordScreen

@@ -128,6 +128,16 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
 }
 
 
+//Notification Card to display pending maintenance, upcoming maintenance etc.
+@Composable
+fun NotificationCard(){}
+
+
+// InfoCard to display info about advisory, dos and donts, videos and other app features
+@Composable
+fun InfoCard(){}
+
+
 
 
 

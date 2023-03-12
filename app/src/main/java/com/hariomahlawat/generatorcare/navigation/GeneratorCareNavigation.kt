@@ -34,7 +34,7 @@ fun GeneratorCareNavigation() {
             AddGeneratorScreen(navController = navController)
         }
 
-        composable(GeneratorCareScreens.AdvisoryScreen.name) {
+        composable(GeneratorCareScreens.GeneratorAdvisoryScreen.name) {
             GeneratorAdvisoryScreen(navController = navController)
         }
 

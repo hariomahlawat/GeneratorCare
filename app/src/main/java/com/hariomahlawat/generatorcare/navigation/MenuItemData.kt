@@ -15,7 +15,7 @@ class MenuItemData {
             MenuItem(
                 id = "inventory",
                 title = "My Generators",
-                contentDescription = "Get Maintenance History",
+                contentDescription = "Get My Generators",
                 icon = Icons.Default.List,
                 navigation_address = GeneratorCareScreens.GeneratorsListScreen.name
             ),
@@ -28,10 +28,10 @@ class MenuItemData {
             ),
             MenuItem(
                 id = "advisory",
-                title = "Adviisory",
+                title = "Maintenance Advisory",
                 contentDescription = "Go to advisory screen",
                 icon = Icons.Default.Info,
-                navigation_address = GeneratorCareScreens.AdvisoryScreen.name
+                navigation_address = GeneratorCareScreens.GeneratorAdvisoryScreen.name
             )
         )
     }
