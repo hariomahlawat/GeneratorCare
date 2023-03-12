@@ -13,6 +13,7 @@ class GeneratorRepository @Inject constructor(private val generatorDatabseDao: G
     suspend fun updateGenerator(generator:Generator) = generatorDatabseDao.updateGenerator(generator)
     suspend fun deleteGenerator(generator:Generator) = generatorDatabseDao.deleteGenerator(generator)
     suspend fun deleteAllGenerators() = generatorDatabseDao.deleteAll()
+    suspend fun getGeneratorById(id:String):Generator = generatorDatabseDao.getGeneratorById(id)
     fun getAllGenerators(): Flow<List<Generator>> = generatorDatabseDao.getGenerators().flowOn(
         Dispatchers.IO)
         .conflate()
