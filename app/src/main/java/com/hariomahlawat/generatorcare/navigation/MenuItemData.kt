@@ -1,9 +1,11 @@
 package com.hariomahlawat.generatorcare.navigation
 
+import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.vectorResource
+import com.hariomahlawat.generatorcare.R
 
 class MenuItemData {
     fun loadMenuItems():List<MenuItem>{
@@ -23,7 +25,7 @@ class MenuItemData {
                 id = "maintenance_Record",
                 title = "Maintenance History",
                 contentDescription = "Get Maintenance History",
-                icon = Icons.Default.List,
+                icon = Icons.Default.Done,
                 navigation_address = GeneratorCareScreens.MaintenanceRecordScreen.name
             ),
             MenuItem(
@@ -37,7 +39,7 @@ class MenuItemData {
                 id = "checklist",
                 title = "Maintenance Checklist",
                 contentDescription = "Go to maintenance checklist screen",
-                icon = Icons.Default.List,
+                icon = Icons.Default.CheckCircle,
                 navigation_address = GeneratorCareScreens.MaintenanceChecklistScreen.name
             ),
 
