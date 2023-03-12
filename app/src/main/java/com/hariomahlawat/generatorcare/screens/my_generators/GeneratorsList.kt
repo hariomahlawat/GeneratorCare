@@ -68,24 +68,23 @@ fun GeneratorsListScreen(navController: NavController){
         val generatorViewModel = hiltViewModel<GeneratorViewModel>()
 
         var generatorsList = generatorViewModel.generatorList.collectAsState().value
-        GeneratorsListScreenInner(navController=navController,
-            generatorsList,
-            onGeneratorClick = {}
+        GeneratorsListScreenInner(
+            navController=navController,
+            generatorsList
         )
     }
 }
 
 @Composable
 fun GeneratorsListScreenInner(navController: NavController,
-                              generators: List<Generator>,
-                              onGeneratorClick: (Generator) -> Unit){
+                              generators: List<Generator>){
 
     LazyColumn(
         modifier = Modifier.padding(top = 10.dp)
     ){
 
         items(generators){generator ->
-            GeneratorCard(navController=navController,generator = generator, image_id = getGeneratorLogo(generator.make), onGeneratorClicked = onGeneratorClick)
+            GeneratorCard(navController=navController,generator = generator, image_id = getGeneratorLogo(generator.make))
 
         }
     }
@@ -96,8 +95,7 @@ fun GeneratorCard(
     navController: NavController,
     modifier: Modifier = Modifier,
     generator: Generator,
-    image_id:Int,
-    onGeneratorClicked: (Generator) -> Unit
+    image_id:Int
     ){
     Card(
         shape = RoundedCornerShape(14.dp),
@@ -128,6 +126,7 @@ fun GeneratorCard(
                 Text(text = "KVA Rating: " +generator.kva_rating, style = MaterialTheme.typography.h6)
                 Text(text = "Regd No: " +generator.registration_number, style = MaterialTheme.typography.h6)
                 Text(text = "Hours run: " +generator.hours_run.toString(), style = MaterialTheme.typography.h6)
+                Text(text = "Issue Date: " + generator.issueDate?.let { formatDate(it) }, style = MaterialTheme.typography.h6)
                 Divider(thickness = 2.dp)
                 Row(modifier=Modifier.padding(5.dp),
                 verticalAlignment = Alignment.CenterVertically) {

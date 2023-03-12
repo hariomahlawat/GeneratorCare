@@ -11,7 +11,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.NavController
 import com.hariomahlawat.generatorcare.navigation.*
-import com.hariomahlawat.generatorcare.screens.home.HomeScreenInner
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")

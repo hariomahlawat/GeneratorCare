@@ -1,12 +1,17 @@
 package com.hariomahlawat.generatorcare.screens.add_generator
 
 import android.util.Log
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.repository.GeneratorRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collect
@@ -21,6 +26,7 @@ class GeneratorViewModel  @Inject constructor(private val repository: GeneratorR
 
     private val _generatorList = MutableStateFlow<List<Generator>>(emptyList())
     val generatorList = _generatorList.asStateFlow()
+    var generator: Generator? = null
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -40,6 +46,9 @@ class GeneratorViewModel  @Inject constructor(private val repository: GeneratorR
     fun removeGenerator(generator: Generator) = viewModelScope.launch { repository.deleteGenerator(generator) }
     fun updateGenerator(generator: Generator) = viewModelScope.launch { repository.updateGenerator(generator) }
 
+    fun getGeneratorById(id:String): Job = CoroutineScope(Dispatchers.IO).launch {
+       generator = repository.getGeneratorById(id)
+    }
 
 
 

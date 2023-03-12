@@ -33,7 +33,6 @@ import com.hariomahlawat.generatorcare.components.showToast
 import com.hariomahlawat.generatorcare.data.getGeneratorMakeList
 import com.hariomahlawat.generatorcare.model.Generator
 import com.hariomahlawat.generatorcare.navigation.*
-import com.hariomahlawat.generatorcare.screens.home.HomeScreenInner
 import com.hariomahlawat.generatorcare.utils.formatDate
 import com.vanpra.composematerialdialogs.MaterialDialog
 import com.vanpra.composematerialdialogs.datetime.date.datepicker
