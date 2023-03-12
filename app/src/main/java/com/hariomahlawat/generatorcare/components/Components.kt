@@ -103,15 +103,19 @@ fun GeneratorCard(
         Column(
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(5.dp)
+            modifier = Modifier.padding(20.dp)
         ) {
             Spacer(modifier = modifier.padding(vertical = 5.dp))
             Image(painter = painterResource(id = image_id), contentDescription = null)
             Spacer(modifier = modifier.padding(vertical = 5.dp))
             Text(text = "Regd No: " +generator.registration_number, style = MaterialTheme.typography.subtitle1)
+            Spacer(modifier = modifier.padding(vertical = 2.dp))
             Text(text = "Model: " +generator.model, style = MaterialTheme.typography.subtitle2)
+            Spacer(modifier = modifier.padding(vertical = 2.dp))
             Text(text = "KVA Rating: " +generator.kva_rating, style = MaterialTheme.typography.subtitle2)
+            Spacer(modifier = modifier.padding(vertical = 2.dp))
             Text(text = "Hours run: " +generator.hours_run.toString(), style = MaterialTheme.typography.subtitle2)
+            Spacer(modifier = modifier.padding(vertical = 2.dp))
         }
     }
 }
