@@ -70,7 +70,7 @@ fun HomeScreen(navController: NavController) {
         {
             InventoryCard(navController,generatorsList)
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
-            Divider(thickness = 3.dp, color = Color.Magenta)
+            Divider(thickness = 1.dp, color = Color.LightGray)
         }
 
     }
