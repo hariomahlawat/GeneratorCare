@@ -2,10 +2,13 @@ package com.hariomahlawat.generatorcare.screens.home
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -16,6 +19,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -34,6 +38,7 @@ fun HomeScreen(navController: NavController) {
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+    var scrollState = rememberScrollState()
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
@@ -58,13 +63,22 @@ fun HomeScreen(navController: NavController) {
     ) {
         val generatorViewModel = hiltViewModel<GeneratorViewModel>()
         var generatorsList = generatorViewModel.generatorList.collectAsState().value
-        
-        InventoryCard(navController,generatorsList)
+        Column(
+            verticalArrangement = Arrangement.Top
+            ,modifier = Modifier.verticalScroll(scrollState)
+        )
+        {
+            InventoryCard(navController,generatorsList)
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            Divider(thickness = 3.dp, color = Color.Magenta)
+        }
+
     }
 
 }
 @Composable
 fun InventoryCard(navController:NavController,generators: List<Generator>){
+    // My generators section
     Column(
         horizontalAlignment = Alignment.Start,
         verticalArrangement = Arrangement.Top,
@@ -79,16 +93,7 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 3.dp))
-
-        Card(
-            shape = RoundedCornerShape(4.dp),
-            //elevation = 9.dp,
-            backgroundColor = MaterialTheme.colors.background,
-            contentColor = MaterialTheme.colors.onBackground,
-            modifier = Modifier
-                .fillMaxWidth()
-                //.padding(8.dp)
-        ) {
+        // columns for card rows and button rows
             Column(verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.Start,
                 modifier = Modifier
@@ -96,12 +101,13 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
                     .padding(5.dp)
 
                 ) {
-                LazyRow(modifier = Modifier.padding(4.dp)){
+                LazyRow(modifier = Modifier.padding(vertical = 4.dp)){
                     items(generators){generator ->
                         GeneratorCard(navController = navController, generator = generator, image_id = getGeneratorLogo(generator.make))
                     }
                 }
 
+                // row for buttons - "view all" and "add new generator"
                 Row(horizontalArrangement = Arrangement.SpaceAround,
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth()) {
@@ -116,12 +122,9 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
 
                 }
 
-            }
-
         }
 
     }
-
 }
 
 
