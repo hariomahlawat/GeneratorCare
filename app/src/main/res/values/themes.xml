@@ -2,6 +2,6 @@
 <resources>
 
     <style name="Theme.GeneratorCare" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/Primary500</item>
+        <item name="android:statusBarColor">@color/Primary200</item>
     </style>
 </resources>
