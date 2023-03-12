@@ -93,8 +93,8 @@ fun InventoryCard(navController:NavController,generators: List<Generator>){
             .padding(5.dp),
     ) {
         Text(
-            text = "My Generators (Total - ${generators.count()})",
-            style = MaterialTheme.typography.subtitle1
+            text = " My Generators (Total - ${generators.count()})",
+            style = MaterialTheme.typography.h6
         )
         Spacer(modifier = Modifier
             .fillMaxWidth()
