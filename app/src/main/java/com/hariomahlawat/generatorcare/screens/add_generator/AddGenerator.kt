@@ -500,16 +500,35 @@ fun AddGenerator(generators: List<Generator>,
         // ---------- date picker ends-------------------------------------------
 
 
+        //========== Check box for confirmation before saving ============================
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
+        val checkedState = remember { mutableStateOf(false) }
+        Row {
+            Checkbox(
+                checked = checkedState.value,
+                modifier = Modifier.padding(16.dp),
+                onCheckedChange = { checkedState.value = it },
+            )
+            Text(text = "I have checked the details and want to save the form.", modifier = Modifier.padding(25.dp))
+        }
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
+
+
+
+
         
         //--------Save button - to save the form in database
         AppButton(text = "Save",
             onClick = {
-                if (registration_number.isNotEmpty()
-                    && make=="Select OEM"
-                    && model.isNotEmpty()
-                    && hours_run.isNotEmpty()
-                    && kva_rating.isNotEmpty()
-                    && issueDate != LocalDate.now()
+                if (
+                    (registration_number.isNotEmpty()
+                      && make=="Select OEM"
+                      && model.isNotEmpty()
+                      && hours_run.isNotEmpty()
+                      && kva_rating.isNotEmpty()
+                      && issueDate != LocalDate.now()
+                      )
+                    && checkedState.value
                 ) {
                     // add to database
                     onAddGenerator(
@@ -529,6 +548,7 @@ fun AddGenerator(generators: List<Generator>,
                     hours_run=""
                     kva_rating=""
                     issueDate=LocalDate.now()
+                    checkedState.value=false
                     showToast(context,"Generator added.")
                 }
                 else{
