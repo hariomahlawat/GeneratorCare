@@ -107,20 +107,16 @@ fun AddGenerator(generators: List<Generator>,
     var model by remember {mutableStateOf("")}
     var hours_run by remember {mutableStateOf("")}
     var kva_rating by remember {mutableStateOf("")}
-    var issueDate by remember {mutableStateOf(LocalDate.now())}
-    val dateDialogState = rememberMaterialDialogState()
-    val formattedDate by remember {
-        derivedStateOf {
-            DateTimeFormatter
-                .ofPattern("dd MMM yyyy")
-                .format(issueDate)
-        }
-    }
+
+
     val context = LocalContext.current
 
 
-    Column(modifier = Modifier.fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top,
+        modifier = Modifier.fillMaxWidth()
+    ) {
         AppInputText(
             modifier = Modifier.padding(
                 top = 9.dp,
@@ -182,13 +178,24 @@ fun AddGenerator(generators: List<Generator>,
             onTextChange = {
                 model = it
             })
+
+        //-------------- date picker - Issue Date ----------------------------------
         Divider(thickness = 1.dp)
-        //-------------- date picker----------------------------------
-        Row(horizontalArrangement = Arrangement.Center,
+
+        var issueDate by remember {mutableStateOf(LocalDate.now())}
+        val dateDialogState = rememberMaterialDialogState()
+        val formattedDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(issueDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)) {
+                .padding(horizontal = 25.dp)) {
             Button(onClick = {
                 dateDialogState.show()
             }) {
@@ -218,6 +225,8 @@ fun AddGenerator(generators: List<Generator>,
                 issueDate=it
             }
         }
+        // ---------- date picker ends-------------------------------------------
+
 
         //--------------------------------------------------------
         AppInputText(
@@ -238,7 +247,261 @@ fun AddGenerator(generators: List<Generator>,
             onTextChange = {
                 kva_rating = it
             })
+        
+        //----------------------------------------------------------------
+        // ------- last maintenance done----------------------
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
+        Divider(thickness = 13.dp)
+        Spacer(modifier = Modifier.padding(vertical = 8.dp))
+        Text(
+            text = "Please provide the details of the last maintenance done. This is required to schedule your next maintenance.",
+            modifier = Modifier.padding(horizontal = 25.dp)
+        )
+        Spacer(modifier = Modifier.padding(vertical = 4.dp))
 
+        //-------------- date picker - Last Engine Oil Change Date ----------------------------------
+        Divider(thickness = 1.dp)
+
+        var engineOilChangeDate by remember {mutableStateOf(LocalDate.now())}
+        val engineOilChangeDateDialogState = rememberMaterialDialogState()
+        val formattedEngineOilChangeDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(engineOilChangeDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)) {
+            Button(onClick = {
+                engineOilChangeDateDialogState.show()
+            }) {
+                Text(text = "Engine oil change")
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            if(engineOilChangeDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedEngineOilChangeDate)
+            }
+
+        }
+        Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
+
+        MaterialDialog(
+            dialogState = engineOilChangeDateDialogState,
+            buttons = {
+                positiveButton(text = "Ok")
+                negativeButton(text = "Cancel")
+            }
+        ) {
+            this.datepicker(
+                initialDate = LocalDate.now(),
+                title = "Engine oil change date",
+            ){
+                engineOilChangeDate=it
+            }
+        }
+        // ---------- date picker ends-------------------------------------------
+
+        //-------------- date picker - Last Engine Oil Filter Change Date ----------------------------------
+        Divider(thickness = 1.dp)
+
+        var engineOilFilterChangeDate by remember {mutableStateOf(LocalDate.now())}
+        val engineOilFilterChangeDateDialogState = rememberMaterialDialogState()
+        val formattedEngineOilFilterChangeDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(engineOilFilterChangeDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)) {
+            Button(onClick = {
+                engineOilFilterChangeDateDialogState.show()
+            }) {
+                Text(text = "Oil filter change")
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            if(engineOilFilterChangeDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedEngineOilFilterChangeDate)
+            }
+
+        }
+        Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
+
+        MaterialDialog(
+            dialogState = engineOilFilterChangeDateDialogState,
+            buttons = {
+                positiveButton(text = "Ok")
+                negativeButton(text = "Cancel")
+            }
+        ) {
+            this.datepicker(
+                initialDate = LocalDate.now(),
+                title = "Engine oil filter change date",
+            ){
+                engineOilFilterChangeDate=it
+            }
+        }
+        // ---------- date picker ends-------------------------------------------
+
+        //-------------- date picker - Last fuel filter change Date ----------------------------------
+        Divider(thickness = 1.dp)
+
+        var fuelFilterChangeDate by remember {mutableStateOf(LocalDate.now())}
+        val fuelFilterChangeDateDialogState = rememberMaterialDialogState()
+        val formattedFuelFilterChangeDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(fuelFilterChangeDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)) {
+            Button(onClick = {
+                fuelFilterChangeDateDialogState.show()
+            }) {
+                Text(text = "Fuel filter change")
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            if(fuelFilterChangeDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedFuelFilterChangeDate)
+            }
+
+        }
+        Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
+
+        MaterialDialog(
+            dialogState = fuelFilterChangeDateDialogState,
+            buttons = {
+                positiveButton(text = "Ok")
+                negativeButton(text = "Cancel")
+            }
+        ) {
+            this.datepicker(
+                initialDate = LocalDate.now(),
+                title = "Fuel filter change date",
+            ){
+                fuelFilterChangeDate=it
+            }
+        }
+        // ---------- date picker ends-------------------------------------------
+
+        //-------------- date picker - Last air filter Date ----------------------------------
+        Divider(thickness = 1.dp)
+
+        var airFilterChangeDate by remember {mutableStateOf(LocalDate.now())}
+        val airFilterChangeDateDialogState = rememberMaterialDialogState()
+        val formattedAirFilterChangeDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(airFilterChangeDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)) {
+            Button(onClick = {
+                airFilterChangeDateDialogState.show()
+            }) {
+                Text(text = "Air filter change")
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            if(airFilterChangeDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedAirFilterChangeDate)
+            }
+
+        }
+        Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
+
+        MaterialDialog(
+            dialogState = airFilterChangeDateDialogState,
+            buttons = {
+                positiveButton(text = "Ok")
+                negativeButton(text = "Cancel")
+            }
+        ) {
+            this.datepicker(
+                initialDate = LocalDate.now(),
+                title = "Air filter change date",
+            ){
+                airFilterChangeDate=it
+            }
+        }
+        // ---------- date picker ends-------------------------------------------
+
+        //-------------- date picker - Fuel Tank Cleaning Date ----------------------------------
+        Divider(thickness = 1.dp)
+
+        var fuelTankCleaningDate by remember {mutableStateOf(LocalDate.now())}
+        val fuelTankCleaningDateDialogState = rememberMaterialDialogState()
+        val formattedFuelTankCleaningDate by remember {
+            derivedStateOf {
+                DateTimeFormatter
+                    .ofPattern("dd MMM yyyy")
+                    .format(fuelTankCleaningDate)
+            }
+        }
+        Row(horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 25.dp)) {
+            Button(onClick = {
+                fuelTankCleaningDateDialogState.show()
+            }) {
+                Text(text = "Fuel tank Cleaning")
+            }
+            Spacer(modifier = Modifier.padding(16.dp))
+            if(fuelTankCleaningDate==LocalDate.now()){
+                Text(text = "- - / - - - / - - - -")
+            }else{
+                Text(text = formattedFuelTankCleaningDate)
+            }
+
+        }
+        Divider(thickness = 1.dp, modifier = Modifier.padding(5.dp))
+
+        MaterialDialog(
+            dialogState = fuelTankCleaningDateDialogState,
+            buttons = {
+                positiveButton(text = "Ok")
+                negativeButton(text = "Cancel")
+            }
+        ) {
+            this.datepicker(
+                initialDate = LocalDate.now(),
+                title = "Fuel tank clean date",
+            ){
+                fuelTankCleaningDate=it
+            }
+        }
+        // ---------- date picker ends-------------------------------------------
+
+
+        
+        //--------Save button - to save the form in database
         AppButton(text = "Save",
             onClick = {
                 if (registration_number.isNotEmpty()
