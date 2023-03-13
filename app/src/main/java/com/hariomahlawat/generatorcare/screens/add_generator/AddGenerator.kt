@@ -6,7 +6,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -52,6 +54,7 @@ fun AddGeneratorScreen(navController: NavController){
 
     val scaffoldState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+    val scrollState = rememberScrollState()
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
@@ -75,11 +78,18 @@ fun AddGeneratorScreen(navController: NavController){
             )
         }
     ) {
-        val generatorViewModel = hiltViewModel<GeneratorViewModel>()
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top,
+            modifier = Modifier.verticalScroll(scrollState)
+        ) {
+            val generatorViewModel = hiltViewModel<GeneratorViewModel>()
 
-        var generatorsList = generatorViewModel.generatorList.collectAsState().value
-        AddGenerator(generators = generatorsList,
-            onAddGenerator = {generatorViewModel.addGenerator(it)})
+            var generatorsList = generatorViewModel.generatorList.collectAsState().value
+            AddGenerator(generators = generatorsList,
+                onAddGenerator = {generatorViewModel.addGenerator(it)})
+        }
+
     }
 
 }
